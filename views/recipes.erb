@@ -1,16 +1,33 @@
 <h1>Recipes</h1>
 <% if @recipes.any?() %>
-<h3>Recipes:</h3>
+<div class="row">
+  <div class="col-md-6">
+    <div class="btn-group btn-group-justified">
+      <a href="/recipes/name" class="btn btn-default">Recipe</a>
+      <a href="/recipes/rating" class="btn btn-default">Rating</a>
+    </div>
+  </div>
+</div>
 
-  <ul>
-    <% @recipes.each() do |recipe| %>
-      <li><%= recipe.name %> <%= recipe.rating %> <a href="/recipes/<%= recipe.id() %>"></a></li>
-    <% end %>
-  </ul>
+<div class="row">
+<ul>
+  <div class="col-md-3">
+  <% @recipes.each() do |recipe| %>
+    <li><a href="/recipes/<%= recipe.id() %>"><%= recipe.name %> </a></li>
+  <% end %>
+</div>
+  <div class="col-md-3">
+  <% @recipes.each() do |recipe| %>
+    <li><%= recipe.rating %></li>
+  <% end %>
+</div>
+</ul>
 <% else %>
-  <h3>There are no recipes yet.</h3>
-<% end %>
+<h3>There are no recipes yet.</h3>
+<% end %></div>
 
+<br>
+<div class="row">
 <form class="form-inline" action="/recipes" method="post">
     <label for="name"></label>
     <input type="text" name="name" placeholder="Name" required>
@@ -18,5 +35,8 @@
     <label for="rating"></label>
     <input type="rating" name="rating" placeholder="Rating" required>
 
-    <button type="submit" class="btn btn-primary">Add Category</button>
-</form>
+    <button type="submit" class="btn btn-primary">Add Recipe</button>
+</form></div>
+
+<br><br>
+<a class="btn btn-success" href="/">Home</a>

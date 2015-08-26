@@ -1,0 +1,29 @@
+<h2><%= @category.name %></h2>
+
+<% if @category.recipes.any? %>
+  <ul>
+      <% @category.recipes.each do |recipe| %>
+        <li><%= recipe.name %></li>
+      <% end %>
+  </ul>
+<% else %>
+  <p>
+      There are no recipes in this category.
+  </p>
+<% end %>
+
+<form action="/category/recipe" method="post">
+    <input type="hidden" name="category_id" value="<%= @category.id() %>">
+  <select id="recipe_select" name="recipe_select" type="text">
+    <% @recipes.each() do |recipe| %>
+      <option value="<%= recipe.id %>"><%= recipe.name %></option>
+    <% end %>
+  </select>
+    <button type="submit">Add Recipe</button>
+</form>
+<br>
+<form action="/category/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="category_id" value="<%= @category.id %>">
+    <button name="submit" class="btn btn-danger">Delete Category</button>
+</form>

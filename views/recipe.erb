@@ -1,0 +1,13 @@
+<h2><%= @recipe.name %></h2>
+
+
+<a class="btn btn-success" href="/recipe/update">Update</a>
+
+<br>
+<br>
+
+<form action="/recipe/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="recipe_id" value="<%= @recipe.id %>">
+  <button name="submit" class="btn btn-danger">Delete Recipe</button>
+</form>

@@ -5,7 +5,7 @@
 
     <ul>
       <% @categories.each() do |category| %>
-        <li><%= category.name %> <a href="/categories/<%= category.id() %>"></a></li>
+        <li><a href="/categories/<%= category.id() %>"><%= category.name %> </a></li>
       <% end %>
     </ul>
 <% else %>
@@ -17,3 +17,5 @@
     <input type="text" name="name">
     <button type="submit" class="btn btn-primary">Add Category</button>
 </form>
+<br><br>
+<a class="btn btn-success" href="/">Home</a>

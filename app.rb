@@ -20,6 +20,12 @@ end
 post('/categories') do
   name = params.fetch('name')
   Category.create({:name => name})
-
   redirect('/categories')
+end
+
+post('/recipes') do
+  name = params.fetch('name')
+  rating = params.fetch('rating').to_i()
+  Recipe.create({:name => name, :rating => rating})
+  redirect('/recipes')
 end

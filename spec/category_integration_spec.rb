@@ -12,4 +12,12 @@ describe('The recipes app', {:type => :feature}) do
       expect(page).to have_content('Categories of recipes:')
     end
   end
+
+  describe('the path from home page') do
+    it('allows the user to navigate to the recipes page') do
+      visit('/')
+      click_link('Recipes')
+      expect(page).to have_content('Recipes:')
+    end
+  end
 end

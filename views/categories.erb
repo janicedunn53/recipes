@@ -1,0 +1,19 @@
+<h1>Categories</h1>
+
+<% if @categories.any?() %>
+  <h3>Categories of recipes:</h3>
+
+    <ul>
+      <% @categories.each() do |category| %>
+        <li><%= category.name %> <a href="/categories/<%= category.id() %>"></a></li>
+      <% end %>
+    </ul>
+<% else %>
+  <h3>There are no categories yet.</h3>
+<% end %>
+
+<form class="form-inline" action="/categories" method="post">
+    <label for="name"></label>
+    <input type="text" name="name">
+    <button type="submit" class="btn btn-primary">Add Category</button>
+</form>

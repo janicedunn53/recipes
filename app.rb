@@ -78,3 +78,11 @@ delete('/category/delete') do
   category.destroy()
   redirect('/categories')
 end
+
+delete('/category/recipe') do
+  recipe = Recipe.find(params.fetch('recipe_id').to_i())
+  category_id = params.fetch('category_id').to_i()
+  category = Category.find(category_id)
+  category.recipes.destroy(recipe)
+  redirect("/categories/#{category_id.to_s}")
+end

@@ -9,4 +9,7 @@ describe(Recipe) do
       expect(recipe.categories()).to(eq([category1, category2]))
     end
   end
+
+  it { should have_many(:ingredients) }  
+  it { should have_many(:instructions) }
 end

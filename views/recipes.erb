@@ -1,34 +1,30 @@
 
 <h1>Recipes</h1>
 <% if @recipes.any?() %>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="btn-group btn-group-justified">
-      <a href="/recipes/name" class="btn btn-default">Recipe</a>
-      <a href="/recipes/rating" class="btn btn-default">Rating</a>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel">
+      <div class="btn-group btn-group-justified">
+        <a href="/recipes/name" class="btn btn-default">Recipe</a>
+        <a href="/recipes/rating" class="btn btn-default">Rating</a>
+      </div>
+      <div class="list-group">
+        <% @recipes.each() do |recipe| %>
+          <a class="list-group-item" href="/recipes/<%= recipe.id() %>">
+            <div class="row">
+              <div class="col-md-4 col-md-offset-2"><%= recipe.name %></div>
+              <div class="col-md-4"><%= recipe.rating %></div>
+          </div>
+          </a>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="row">
-<ul>
-  <div class="col-md-3 col-md-offset-3">
-  <% @recipes.each() do |recipe| %>
-    <li><a href="/recipes/<%= recipe.id() %>"><%= recipe.name %> </a></li>
-  <% end %>
-</div>
-  <div class="col-md-3">
-  <% @recipes.each() do |recipe| %>
-    <li><%= recipe.rating %></li>
-  <% end %>
-</div>
-</ul>
 <% else %>
-<h3>There are no recipes yet.</h3>
-<% end %></div>
+  <h3>There are no recipes yet.</h3>
+<% end %>
 
 <br>
-<div class="row">
+
 <form class="form-inline" action="/recipes" method="post">
     <label for="name"></label>
     <input type="text" name="name" placeholder="Name" required>
@@ -37,10 +33,4 @@
     <input type="rating" name="rating" placeholder="Rating" required>
 
     <button type="submit" class="btn btn-primary">Add Recipe</button>
-</form></div>
-<br><br>
-<form action="/recipes/search" method="post">
-  Find recipes with
-  <input type="text" name="ingredient" placeholder="ingredient">
-  <button type="submit">Find</button>
 </form>

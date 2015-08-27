@@ -24,10 +24,10 @@ get('/recipes/name') do
 end
 
 post('/recipes/search') do
-  ingredient_to_find = params.fetch('ingredient')
+  ingredient = params.fetch('ingredient')
 
   recipes_found= []
-  Ingredient.where(ingredient: ingredient_to_find).each do |ingredient|
+  Ingredient.where(ingredient: ingredient).each do |ingredient|
     recipes_found.push(ingredient.recipe_id)
   end
 

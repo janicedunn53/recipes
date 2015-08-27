@@ -7,6 +7,6 @@ body {
     background-repeat: no-repeat;
 }
 
-.rating {
-  text_align: right;
+.icon-action form{
+  display: inline;
 }

@@ -10,6 +10,16 @@ describe(Recipe) do
     end
   end
 
-  it { should have_many(:ingredients) }  
+  it { should have_many(:ingredients) }
   it { should have_many(:instructions) }
+
+  it('validate the presence of recipe name') do
+    recipe = Recipe.new({:name => ""})
+    expect(recipe.save()).to(eq(false))
+  end
+
+  it('validates the presence of recipe rating') do
+    recipe = Recipe.new({:rating => ""})
+    expect(recipe.save()).to(eq(false))
+  end
 end

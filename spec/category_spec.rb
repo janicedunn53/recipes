@@ -10,8 +10,9 @@ describe(Category) do
     end
   end
 
-  it('validates presence of description') do
+  it('validates presence of name') do
     category = Category.new({:name => ""})
     expect(category.save()).to(eq(false))
   end
+
 end

@@ -13,6 +13,7 @@
               <form action="/recipe/ingredient/delete" method="post">
                 <input type="hidden" name="_method" value="delete">
                 <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+                <input type="hidden" name="ingredient_id" value="<%= ingredient.id() %>">
                 <button class="btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
               </form>
             </li>

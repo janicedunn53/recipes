@@ -73,7 +73,9 @@ end
 
 delete('/recipe/ingredient/delete') do
   recipe_id = params.fetch('recipe_id').to_i
-
+  ingredient_id = params.fetch('ingredient_id').to_i
+  ingredient = Ingredient.find(ingredient_id)
+  ingredient.destroy
   redirect("/recipe/update/#{recipe_id.to_s}")
 end
 

@@ -9,7 +9,7 @@ describe('The recipes app', {:type => :feature}) do
     it('allows the user to navigate to the categories page') do
       visit('/')
       click_link('Categories')
-      expect(page).to have_content('Categories of recipes:')
+      expect(page).to have_content('There are no categories yet.')
     end
   end
 
@@ -17,7 +17,7 @@ describe('The recipes app', {:type => :feature}) do
     it('allows the user to navigate to the recipes page') do
       visit('/')
       click_link('Recipes')
-      expect(page).to have_content('Recipes:')
+      expect(page).to have_content('There are no recipes yet.')
     end
   end
 end

@@ -1,4 +1,4 @@
-
+<div class="row">
 <h1>Recipes</h1>
 <% if @recipes.any?() %>
   <div class="col-md-8 col-md-offset-2">
@@ -12,7 +12,14 @@
           <a class="list-group-item" href="/recipes/<%= recipe.id() %>">
             <div class="row">
               <div class="col-md-4 col-md-offset-2"><%= recipe.name %></div>
-              <div class="col-md-4"><%= recipe.rating %></div>
+              <div class="col-md-4">
+                <% for i in 1..recipe.rating %>
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <% end %>
+                <% for i in recipe.rating..4 %>
+                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                <% end %>
+              </div>
           </div>
           </a>
         <% end %>
@@ -22,15 +29,16 @@
 <% else %>
   <h3>There are no recipes yet.</h3>
 <% end %>
-
+</div>
 <br>
+<div class="form-group">
+  <form class="form-inline" action="/recipes" method="post">
+      <label for="name"></label>
+      <input type="text" name="name" placeholder="Name" required>
 
-<form class="form-inline" action="/recipes" method="post">
-    <label for="name"></label>
-    <input type="text" name="name" placeholder="Name" required>
+      <label for="rating"></label>
+      <input type="rating" name="rating" placeholder="Rating" required>
 
-    <label for="rating"></label>
-    <input type="rating" name="rating" placeholder="Rating" required>
-
-    <button type="submit" class="btn btn-primary">Add Recipe</button>
-</form>
+      <button type="submit" class="btn btn-primary">Add Recipe</button>
+  </form>
+</div>

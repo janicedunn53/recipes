@@ -8,7 +8,7 @@ describe('The recipes app', {:type => :feature}) do
   describe('the path from home page') do
     it('allows the user to navigate to the categories page') do
       visit('/')
-      click_link('Categories')
+      click_on('categories')
       expect(page).to have_content('There are no categories yet.')
     end
   end

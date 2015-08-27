@@ -32,7 +32,6 @@ post('/recipes/search') do
   end
 
   @recipes = Recipe.find(recipes_found)
-
   erb(:recipes)
 end
 
@@ -70,6 +69,18 @@ end
 get('/recipe/update/:id') do
   @recipe = Recipe.find(params.fetch('id').to_i)
   erb(:recipe_update)
+end
+
+delete('/recipe/ingredient/delete') do
+  recipe_id = params.fetch('recipe_id').to_i
+
+  redirect("/recipe/update/#{recipe_id.to_s}")
+end
+
+delete('/recipe/instruction/delete') do
+  recipe_id = params.fetch('recipe_id').to_i
+
+  redirect("/recipe/update/#{recipe_id.to_s}")
 end
 
 post('/recipe/ingredients') do

@@ -2,13 +2,21 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <div class="panel">
+    <div class="panel panel-primary">
       <div class="panel-heading">
         <h4>Ingredients</h4>
       </div>
       <% @recipe.ingredients.each do |ingredient| %>
         <ul class="list-group">
-          <li class="list-group-item"><%= ingredient.amount %> <%= ingredient.ingredient %></li>
+          <div class="icon-action">
+            <li class="list-group-item"><%= ingredient.amount %> <%= ingredient.ingredient %>
+              <form action="/recipe/ingredient/delete" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+                <button class="btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
+              </form>
+            </li>
+        </div>
         </ul>
       <% end %>
     </div>
@@ -17,13 +25,21 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <div class="panel">
+    <div class="panel panel-primary">
       <div class="panel-heading">
-        <h4>Directions</h4>
+        <h4>Instructions</h4>
       </div>
       <% @recipe.instructions.each do |instruction| %>
         <ol class="list-group">
-          <li class="list-group-item"><%= instruction.instruction %></li>
+          <div class="icon-action">
+            <li class="list-group-item"><%= instruction.instruction %>
+              <form action="/recipe/instruction/delete" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+                <button class="btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
+              </form>
+            </li>
+          </div>
         </ol>
       <% end %>
     </div>

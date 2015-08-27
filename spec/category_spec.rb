@@ -9,4 +9,9 @@ describe(Category) do
       expect(category.recipes()).to(eq([recipe1, recipe2]))
     end
   end
+
+  it('validates presence of description') do
+    category = Category.new({:name => ""})
+    expect(category.save()).to(eq(false))
+  end
 end

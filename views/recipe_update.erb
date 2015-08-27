@@ -6,6 +6,12 @@
   </ul>
 <% end %>
 
+<% @recipe.instructions.each do |instruction| %>
+  <ol>
+    <li><%= instruction.instruction %></li>
+  </ol>
+<% end %>
+
 <form action="/recipe/ingredients" method="post">
   <input type="hidden" name="recipe_id" value="<%= @recipe.id %>">
 
@@ -16,4 +22,13 @@
   <input type="text" name="amount">
 
   <button type="submit">Add</button>
+</form>
+
+<form action="/recipe/instructions" method="post">
+  <input type="hidden" name="recipe_id" value="<%= @recipe.id %>">
+
+  <label for="instruction">Instruction</label>
+  <input type="text" name="instruction">
+
+  <button name="submit">Add</button>
 </form>

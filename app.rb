@@ -67,6 +67,13 @@ post('/recipe/ingredients') do
   redirect("/recipe/update/#{recipe_id.to_s}")
 end
 
+post('/recipe/instructions') do
+  instruction = params.fetch('instruction')
+  recipe_id = params.fetch('recipe_id')
+  Instruction.create(:instruction => instruction, :recipe_id => recipe_id)
+  redirect("/recipe/update/#{recipe_id.to_s}")
+end
+
 delete('/recipe/delete') do
   recipe = Recipe.find(params.fetch('recipe_id').to_i())
   recipe.destroy()

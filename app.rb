@@ -54,8 +54,17 @@ get('/recipes/:id') do
   erb(:recipe)
 end
 
-get('/recipe/update') do
+get('/recipe/update/:id') do
+  @recipe = Recipe.find(params.fetch('id').to_i)
   erb(:recipe_update)
+end
+
+post('/recipe/ingredients') do
+  ingredient = params.fetch('ingredient')
+  amount = params.fetch('amount')
+  recipe_id = params.fetch('recipe_id')
+  Ingredient.create(:ingredient => ingredient, :amount => amount, :recipe_id => recipe_id)
+  redirect("/recipe/update/#{recipe_id.to_s}")
 end
 
 delete('/recipe/delete') do

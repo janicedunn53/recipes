@@ -5,7 +5,9 @@
       <div class="panel">
         <div class="list-group">
           <% @categories.each() do |category| %>
-            <a class="list-group-item" href="/categories/<%= category.id() %>"><%= category.name %> </a>
+            <a class="list-group-item" href="/categories/<%= category.id() %>"><%= category.name %>
+              <span class="badge"><%= category.recipes.length %></span>
+            </a>
           <% end %>
         </div>
       </div>

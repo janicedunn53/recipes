@@ -23,6 +23,11 @@ get('/recipes/name') do
   erb(:recipes)
 end
 
+post('/recipes/search') do
+  ingredient = params.fetch('ingredient')
+  erb(:recipes)
+end
+
 get('/categories') do
   @categories = Category.all()
   erb(:categories)

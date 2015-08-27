@@ -1,0 +1,8 @@
+body {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    background-image: url(img/ingredients_photo.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+}

@@ -1,6 +1,16 @@
 <h2><%= @recipe.name %></h2>
 
+<% @recipe.ingredients.each do |ingredient| %>
+  <ul>
+      <li><%= ingredient.amount %> <%= ingredient.ingredient %></li>
+  </ul>
+<% end %>
 
+<% @recipe.instructions.each do |instruction| %>
+  <ol>
+    <li><%= instruction.instruction %></li>
+  </ol>
+<% end %>
 <a class="btn btn-success" href="/recipe/update/<%= @recipe.id %>">Update</a>
 
 <br>
@@ -11,6 +21,3 @@
   <input type="hidden" name="recipe_id" value="<%= @recipe.id %>">
   <button name="submit" class="btn btn-danger">Delete Recipe</button>
 </form>
-
-<br>
-<a class="btn btn-success" href="/">Home</a>

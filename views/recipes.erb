@@ -1,7 +1,8 @@
+
 <h1>Recipes</h1>
 <% if @recipes.any?() %>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 col-md-offset-3">
     <div class="btn-group btn-group-justified">
       <a href="/recipes/name" class="btn btn-default">Recipe</a>
       <a href="/recipes/rating" class="btn btn-default">Rating</a>
@@ -11,7 +12,7 @@
 
 <div class="row">
 <ul>
-  <div class="col-md-3">
+  <div class="col-md-3 col-md-offset-3">
   <% @recipes.each() do |recipe| %>
     <li><a href="/recipes/<%= recipe.id() %>"><%= recipe.name %> </a></li>
   <% end %>
@@ -37,6 +38,9 @@
 
     <button type="submit" class="btn btn-primary">Add Recipe</button>
 </form></div>
-
 <br><br>
-<a class="btn btn-success" href="/">Home</a>
+<form action="/recipes/search" method="post">
+  Find recipes with
+  <input type="text" name="ingredient" placeholder="ingredient">
+  <button type="submit">Find</button>
+</form>

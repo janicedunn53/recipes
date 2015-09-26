@@ -33,7 +33,7 @@ This application will allow the user to add a recipe with ingredients and instru
 
 ### Legal
 
-Copyright (c) 2015 **Brigham Thompson & Janice Laset-Parkerson**
+Copyright (c) 2015 **Janice Dunn & Janice Laset-Parkerson**
 
 This software is licensed under the MIT license.
 

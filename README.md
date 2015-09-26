@@ -1,6 +1,5 @@
-# Recipes
-
-##### Add and maintain recipes, 08/27/2015
+# Recipe Box
+##### Ruby/ActiveRecord Exercise for Epicodus, August 27, 2015
 
 #### By Janice Dunn & Janice Laset-Parkerson
 
@@ -12,7 +11,7 @@ This application will allow the user to add a recipe with ingredients and instru
 
 1. open a command terminal
 2. `git clone https://github.com/(fill in)`
-3. `cd employee_tracker` to navigate to the project directory
+3. `cd recipes` to navigate to the project directory
 4. `bundle` to install program dependencies
 5. `postgres` to start postgres server
 6. open a new command terminal

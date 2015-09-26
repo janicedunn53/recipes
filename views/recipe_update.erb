@@ -1,16 +1,52 @@
 <h2><%= @recipe.name %></h2>
 
-<% @recipe.ingredients.each do |ingredient| %>
-  <ul>
-      <li><%= ingredient.amount %> <%= ingredient.ingredient %></li>
-  </ul>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4>Ingredients</h4>
+      </div>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <ul class="list-group">
+          <div class="icon-action">
+            <li class="list-group-item"><%= ingredient.amount %> <%= ingredient.ingredient %>
+              <form action="/recipe/ingredient/delete" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+                <input type="hidden" name="ingredient_id" value="<%= ingredient.id() %>">
+                <button class="btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
+              </form>
+            </li>
+        </div>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<% @recipe.instructions.each do |instruction| %>
-  <ol>
-    <li><%= instruction.instruction %></li>
-  </ol>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4>Instructions</h4>
+      </div>
+      <% @recipe.instructions.each do |instruction| %>
+        <ol class="list-group">
+          <div class="icon-action">
+            <li class="list-group-item"><%= instruction.instruction %>
+              <form action="/recipe/instruction/delete" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+                <input type="hidden" name="instruction_id" value="<%= instruction.id() %>">
+                <button class="btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
+              </form>
+            </li>
+          </div>
+        </ol>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <form action="/recipe/ingredients" method="post">
   <input type="hidden" name="recipe_id" value="<%= @recipe.id %>">
@@ -21,7 +57,7 @@
   <label for="amount">Amount</label>
   <input type="text" name="amount">
 
-  <button type="submit">Add</button>
+  <button type="submit" class="btn btn-primary">Add</button>
 </form>
 
 <form action="/recipe/instructions" method="post">
@@ -30,5 +66,5 @@
   <label for="instruction">Instruction</label>
   <input type="text" name="instruction">
 
-  <button name="submit">Add</button>
+  <button name="submit" class="btn btn-primary">Add</button>
 </form>

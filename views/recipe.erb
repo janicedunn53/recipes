@@ -1,22 +1,40 @@
 <h2><%= @recipe.name %></h2>
 
-<% @recipe.ingredients.each do |ingredient| %>
-  <ul>
-      <li><%= ingredient.amount %> <%= ingredient.ingredient %></li>
-  </ul>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4>Ingredients</h4>
+      </div>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <ul class="list-group">
+          <li class="list-group-item"><%= ingredient.amount %> <%= ingredient.ingredient %></li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<% @recipe.instructions.each do |instruction| %>
-  <ol>
-    <li><%= instruction.instruction %></li>
-  </ol>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4>Directions</h4>
+      </div>
+      <% @recipe.instructions.each do |instruction| %>
+        <ol class="list-group">
+          <li class="list-group-item"><%= instruction.instruction %></li>
+        </ol>
+      <% end %>
+    </div>
+  </div>
+</div>
 <a class="btn btn-success" href="/recipe/update/<%= @recipe.id %>">Update</a>
 
 <br>
 <br>
 
-<form action="/recipe/delete" method="post">
+<form class="form-inline" action="/recipe/delete" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="hidden" name="recipe_id" value="<%= @recipe.id %>">
   <button name="submit" class="btn btn-danger">Delete Recipe</button>

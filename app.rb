@@ -25,6 +25,13 @@ end
 
 post('/recipes/search') do
   ingredient = params.fetch('ingredient')
+
+  recipes_found= []
+  Ingredient.where(ingredient: ingredient).each do |ingredient|
+    recipes_found.push(ingredient.recipe_id)
+  end
+
+  @recipes = Recipe.find(recipes_found)
   erb(:recipes)
 end
 
@@ -62,6 +69,22 @@ end
 get('/recipe/update/:id') do
   @recipe = Recipe.find(params.fetch('id').to_i)
   erb(:recipe_update)
+end
+
+delete('/recipe/ingredient/delete') do
+  recipe_id = params.fetch('recipe_id').to_i
+  ingredient_id = params.fetch('ingredient_id').to_i
+  ingredient = Ingredient.find(ingredient_id)
+  ingredient.destroy
+  redirect("/recipe/update/#{recipe_id.to_s}")
+end
+
+delete('/recipe/instruction/delete') do
+  recipe_id = params.fetch('recipe_id').to_i
+  instruction_id = params.fetch('instruction_id').to_i
+  instruction = Instruction.find(instruction_id)
+  instruction.destroy
+  redirect("/recipe/update/#{recipe_id.to_s}")
 end
 
 post('/recipe/ingredients') do
